@@ -28,6 +28,42 @@
   color: #61dafb;
 }
 
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  border-bottom: solid black 1px;
+}
+
+.title {
+  padding: 0;
+  line-height:0;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+.card {
+
+  padding: 0px;
+  margin: 20px;
+  border: solid black 1px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardImg{
+height: 50%;
+}
+
+.cardDetails {
+  text-align: left;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
