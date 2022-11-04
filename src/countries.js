@@ -5,6 +5,7 @@ export const Countries = ({ allCountries }) => {
   const [searchWord, setSearchWord] = useState([]);
   const [select, setSelect] = useState("none");
   const [filterSearch, setFilterSearch] = useState([]);
+  const [groups, setGroups] = useState([]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -13,29 +14,38 @@ export const Countries = ({ allCountries }) => {
 
   const handleSelect = (e) => {
     e.preventDefault();
-    if (select !== "none") {
-      setSelect(e.target.value);
-    }
+    setSelect(e.target.value);
+    console.log(select);
   };
   useEffect(() => {
+    const filterRegion = async (region) => {
+      if (select !== "none") {
+        const res = await getRegion(region);
+        setGroups(res)
+        setSearchWord("");
+      } else {
+        setGroups(allCountries);
+      }
+    };
+
     const search = async (query) => {
       if (query.length > 0) {
         const response = await getName(query);
 
         if (!response.status) {
-          setFilterSearch(response);
+          setGroups(response);
+          console.log(response);
         }
       } else {
         setFilterSearch(allCountries);
       }
     };
 
-    
-
     search(searchWord);
-  }, [searchWord, allCountries]);
+    filterRegion(select);
+  }, [searchWord, allCountries, select]);
 
-  const displayCountries = filterSearch.map((details) => {
+  let displayCountries = groups.map((details) => {
     return (
       <div className="card">
         <img className="cardImg" src={details.flags.png} alt="Country Flag" />
@@ -72,6 +82,7 @@ export const Countries = ({ allCountries }) => {
         <option value="Asia">Asia</option>
         <option value="Europe">Europe</option>
         <option value="Oceania">Oceania</option>
+        <option value="none">None</option>
       </select>
 
       {/* <div>{autocomplete}</div> */}
