@@ -1,5 +1,6 @@
 import { getName, getRegion } from "./countriesAPI";
 import { useEffect, useState } from "react";
+import {Link} from "react-router-dom"; 
 
 export const Countries = ({ allCountries }) => {
   const [searchWord, setSearchWord] = useState([]);
@@ -48,6 +49,7 @@ export const Countries = ({ allCountries }) => {
 
   let displayCountries = groups.map((details) => {
     return (
+      <Link to="/about">
       <div className="card">
         <img className="cardImg" src={details.flags.png} alt="Country Flag" />
         <div className="cardDetails">
@@ -61,6 +63,7 @@ export const Countries = ({ allCountries }) => {
           
         </div>
       </div>
+      </Link>
     );
   });
 
