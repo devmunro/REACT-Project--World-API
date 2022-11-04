@@ -22,12 +22,12 @@ function App() {
         <p>darkmode</p>
       </div>
 
-      <div className="cardContainer">
+      
         <Countries
           allCountries={allCountries}
           setAllCountries={setAllCountries}
         />
-      </div>
+      
     </div>
   );
 }

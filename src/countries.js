@@ -34,6 +34,7 @@ export const Countries = ({ allCountries }) => {
 
         if (!response.status) {
           setGroups(response);
+          setSelect("none")
           console.log(response);
         }
       } else {
@@ -50,10 +51,14 @@ export const Countries = ({ allCountries }) => {
       <div className="card">
         <img className="cardImg" src={details.flags.png} alt="Country Flag" />
         <div className="cardDetails">
-          <h2>{details.name.common}</h2>
-          <p>{details.population}</p>
-          <p>{details.region}</p>
-          <p>{details.capital}</p>
+          <h2 className="countryTitle">{details.name.common}</h2>
+          <p className="altName">({details.name.official})</p>
+          <ul className="countryDetails">
+          <li><b>Population:</b> {details.population}</li>
+          <li><b>Region:</b> {details.region}</li>
+          <li><b>Capital:</b> {details.capital}</li>
+          </ul>
+          
         </div>
       </div>
     );
@@ -67,15 +72,16 @@ export const Countries = ({ allCountries }) => {
     );
   });
   return (
-    <div>
-      <input
+    <div className="Main">
+      <div className="searchArea">
+      <input className="searchBar"
         placeholder="Search for a country"
         value={searchWord}
         onChange={handleChange}
       ></input>
-      <select value={select} onChange={handleSelect}>
+      <select className="selectBar" value={select} onChange={handleSelect}>
         <option defaultValue value="none">
-          Filter by region
+          Filter by region...
         </option>
         <option value="Africa">Africa</option>
         <option value="Americas">Americas</option>
@@ -84,6 +90,7 @@ export const Countries = ({ allCountries }) => {
         <option value="Oceania">Oceania</option>
         <option value="none">None</option>
       </select>
+      </div>
 
       {/* <div>{autocomplete}</div> */}
       <div className="cardContainer">{displayCountries}</div>

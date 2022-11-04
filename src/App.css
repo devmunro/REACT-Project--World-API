@@ -28,7 +28,6 @@
   color: #61dafb;
 }
 
-
 .Header {
   display: flex;
   justify-content: space-between;
@@ -38,30 +37,80 @@
 
 .title {
   padding: 0;
-  line-height:0;
+  line-height: 0;
 }
-
+/* .Main{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+} */
 .cardContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  
+  background-color: white;
 }
-.card {
 
+.card {
+  width: 300px;
   padding: 0px;
   margin: 20px;
   border: solid black 1px;
   display: flex;
   flex-direction: column;
+  background-color: white;
+  box-shadow: grey 5px 5px 10px;
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
 }
 
-.cardImg{
-height: 50%;
+.cardImg {
+  height: 50%;
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
+  border-bottom: grey 1px solid;
+}
+.countryTitle {
+  font-size: 18px;
+  margin-bottom: 0px;
 }
 
+.altName {
+  font-size: 10px;
+  padding: 0px;
+  margin-top: 2px;
+  font-style: italic;
+}
 .cardDetails {
   text-align: left;
+  padding: 5px 10px;
+}
+.countryDetails {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.searchArea {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  margin: 0px 20px;
+}
+.searchBar {
+  background-image: url("icons/icons8-search.gif");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top-left;
+  padding: 5px;
+  width: 300px;
+  height: 30px;
+  text-align: center;
+}
+
+.selectBar {
+  height: 40px;
+  font-weight: bold;
+  padding: 5px;
 }
 
 @keyframes App-logo-spin {
