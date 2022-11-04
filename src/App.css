@@ -1,38 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 .App {
-  text-align: center;
-}
+  font-family: 'Roboto', sans-serif;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 .Header {
   display: flex;
   justify-content: space-between;
   height: 50px;
-  border-bottom: solid black 1px;
+  padding: 5px 20px;
+  
 }
 
 .title {
@@ -44,15 +21,19 @@
   flex-direction: column;
   justify-content: center;
 } */
+
+.Main {
+  background-color: lightcyan;
+}
 .cardContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: white;
 }
 
 .card {
   width: 300px;
+  height: auto;
   padding: 0px;
   margin: 20px;
   border: solid black 1px;
@@ -60,14 +41,14 @@
   flex-direction: column;
   background-color: white;
   box-shadow: grey 5px 5px 10px;
-  border-top-left-radius: 5%;
-  border-top-right-radius: 5%;
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
 }
 
 .cardImg {
   height: 50%;
-  border-top-left-radius: 5%;
-  border-top-right-radius: 5%;
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
   border-bottom: grey 1px solid;
 }
 .countryTitle {
@@ -88,13 +69,16 @@
 .countryDetails {
   list-style: none;
   padding-left: 0px;
+  font-size: 14px;;
 }
+
 
 .searchArea {
   display: flex;
   justify-content: space-around;
   padding: 20px;
   margin: 0px 20px;
+
 }
 .searchBar {
   background-image: url("icons/icons8-search.gif");

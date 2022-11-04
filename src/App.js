@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <div className="Header">
-        <h1 className="title">Where in the World</h1>
+        <h1 className="title">Where in the World?</h1>
         <p>darkmode</p>
       </div>
 
