@@ -1,13 +1,9 @@
-import { getName, getRegion } from "./countriesAPI";
-import { useEffect, useState } from "react";
-import {Link} from "react-router-dom"; 
 
-export const Countries = ({ allCountries }) => {
-  const [searchWord, setSearchWord] = useState([]);
-  const [select, setSelect] = useState("none");
-  const [filterSearch, setFilterSearch] = useState([]);
-  const [groups, setGroups] = useState([]);
+import {useContext } from "react";
+import { Link } from "react-router-dom";
+import CountriesContext from "./countriesCONTEXT";
 
+export const Countries = () => {
   const handleChange = (e) => {
     e.preventDefault();
     setSearchWord(e.target.value);
@@ -18,51 +14,38 @@ export const Countries = ({ allCountries }) => {
     setSelect(e.target.value);
     console.log(select);
   };
-  useEffect(() => {
-    const filterRegion = async (region) => {
-      if (select !== "none") {
-        const res = await getRegion(region);
-        setGroups(res)
-        setSearchWord("");
-      } else {
-        setGroups(allCountries);
-      }
-    };
 
-    const search = async (query) => {
-      if (query.length > 0) {
-        const response = await getName(query);
-
-        if (!response.status) {
-          setGroups(response);
-          setSelect("none")
-          console.log(response);
-        }
-      } else {
-        setFilterSearch(allCountries);
-      }
-    };
-
-    search(searchWord);
-    filterRegion(select);
-  }, [searchWord, allCountries, select]);
+  const {
+    searchWord,
+    setSearchWord,
+    select,
+    setSelect,
+    filterSearch,
+    groups,
+  } = useContext(CountriesContext);
+  
 
   let displayCountries = groups.map((details) => {
     return (
-      <Link to="/about">
-      <div className="card">
-        <img className="cardImg" src={details.flags.png} alt="Country Flag" />
-        <div className="cardDetails">
-          <h2 className="countryTitle">{details.name.common}</h2>
-          <p className="altName">({details.name.official})</p>
-          <ul className="countryDetails">
-          <li><b>Population:</b> {details.population}</li>
-          <li><b>Region:</b> {details.region}</li>
-          <li><b>Capital:</b> {details.capital}</li>
-          </ul>
-          
+      <Link to={`/countries/${details.area}`}>
+        <div key="details.area" className="card">
+          <img className="cardImg" src={details.flags.png} alt="Country Flag" />
+          <div className="cardDetails">
+            <h2 className="countryTitle">{details.name.common}</h2>
+            <p className="altName">({details.name.official})</p>
+            <ul className="countryDetails">
+              <li>
+                <b>Population:</b> {details.population}
+              </li>
+              <li>
+                <b>Region:</b> {details.region}
+              </li>
+              <li>
+                <b>Capital:</b> {details.capital}
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
       </Link>
     );
   });
@@ -77,22 +60,23 @@ export const Countries = ({ allCountries }) => {
   return (
     <div className="Main">
       <div className="searchArea">
-      <input className="searchBar"
-        placeholder="Search for a country"
-        value={searchWord}
-        onChange={handleChange}
-      ></input>
-      <select className="selectBar" value={select} onChange={handleSelect}>
-        <option defaultValue value="none">
-          Filter by region...
-        </option>
-        <option value="Africa">Africa</option>
-        <option value="Americas">Americas</option>
-        <option value="Asia">Asia</option>
-        <option value="Europe">Europe</option>
-        <option value="Oceania">Oceania</option>
-        <option value="none">None</option>
-      </select>
+        <input
+          className="searchBar"
+          placeholder="Search for a country"
+          value={searchWord}
+          onChange={handleChange}
+        ></input>
+        <select className="selectBar" value={select} onChange={handleSelect}>
+          <option defaultValue value="none">
+            Filter by region...
+          </option>
+          <option value="Africa">Africa</option>
+          <option value="Americas">Americas</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
+          <option value="none">None</option>
+        </select>
       </div>
 
       {/* <div>{autocomplete}</div> */}
