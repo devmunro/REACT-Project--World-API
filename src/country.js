@@ -66,7 +66,7 @@ let borders;
 
         <p>Border Countries</p>
         <nav>
-          <ul>
+          <ul className="border">
             {details.borders ? borders : "No Border Country"}
           </ul>
         </nav>

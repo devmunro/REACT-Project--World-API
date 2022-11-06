@@ -111,6 +111,26 @@
   
 }
 
+
+.border{
+  display: flex;
+}
+
+.border li {
+  border: 1px solid black;
+  background-color: lightgray;
+  list-style: none;
+  padding: 5px;
+  color: black;
+  
+
+}
+
+ a{
+  text-decoration: none;
+  color: black;
+}
+
 /* search */
 .searchArea {
   display: flex;
