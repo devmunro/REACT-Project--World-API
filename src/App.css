@@ -72,7 +72,46 @@
   font-size: 14px;;
 }
 
+/*single country page */
 
+.container {
+
+  display: flex;
+  width: 100%;
+  height: 80vh;
+  margin: 40px;
+}
+
+.container .countryTitle {
+  font-size: 2rem;
+}
+
+.countryImg {
+  width: 50%;
+  padding: 50px;
+}
+
+.countryFactsGroup {
+  margin-top: 75px;
+  width: 50%;
+}
+
+.countryStats {display:flex;}
+.countryStats .countryDetails{
+  font-size: 1.25rem;
+  padding-right: 50px;
+
+  
+  
+}
+
+.countryStats .countryDetails li{
+  
+  padding: 10px 10px 10px 0px;
+  
+}
+
+/* search */
 .searchArea {
   display: flex;
   justify-content: space-around;

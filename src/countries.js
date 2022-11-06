@@ -1,6 +1,5 @@
 
 import {useContext } from "react";
-import { Link } from "react-router-dom";
 import CountriesContext from "./countriesCONTEXT";
 
 export const Countries = () => {
@@ -21,36 +20,11 @@ export const Countries = () => {
     select,
     setSelect,
     filterSearch,
-    groups,
+   displayCountries
   } = useContext(CountriesContext);
   
-
-  let displayCountries = groups.map((details) => {
-    return (
-      <Link to={`/countries/${details.area}`}>
-        <div key="details.area" className="card">
-          <img className="cardImg" src={details.flags.png} alt="Country Flag" />
-          <div className="cardDetails">
-            <h2 className="countryTitle">{details.name.common}</h2>
-            <p className="altName">({details.name.official})</p>
-            <ul className="countryDetails">
-              <li>
-                <b>Population:</b> {details.population}
-              </li>
-              <li>
-                <b>Region:</b> {details.region}
-              </li>
-              <li>
-                <b>Capital:</b> {details.capital}
-              </li>
-            </ul>
-          </div>
-        </div>
-      </Link>
-    );
-  });
-
-  const autocomplete = filterSearch.map((details) => {
+console.log(filterSearch)
+    const autocomplete = filterSearch.map((details) => {
     return (
       <li>
         {details.name.common}, {details.name.official}

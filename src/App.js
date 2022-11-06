@@ -16,7 +16,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Countries />}></Route>
 
-            <Route exact path="/countries/:area" element={<Country />}></Route>
+            <Route path="/:area" element={<Country />}></Route>
           </Routes>
         </div>
       </Router>
